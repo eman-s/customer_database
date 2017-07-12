@@ -439,3 +439,66 @@ const customers = {
     "version": "1.1"
   }
 };
+
+///////////////////////////////////////////////////////////
+
+let pgContent = document.querySelector('body');
+let h1 = document.createElement('h1');
+let pgTitle = document.createTextNode('Internal Company Directory');
+
+ pgContent.appendChild(h1);
+ h1.appendChild(pgTitle);
+
+for (i = 0; i < customers.results.length; i++){
+
+  let lgPic     = customers.results[i].picture.large;
+  let firstName = customers.results[i].name.first;
+  let lastName  = customers.results[i].name.last;
+  let fullName  = `${firstName} ${lastName}`;
+  let email     = customers.results[i].email;
+  let street    = `${customers.results[i].location.street}  ${customers.results[i].location.postcode}`;
+  let cityState = `${customers.results[i].location.city}, ${customers.results[i].location.state}`;
+  let phone     = `${customers.results[i].phone}`
+
+  let divForEach = document.createElement('div')
+  pgContent.appendChild(divForEach);
+
+
+  let picture = document.createElement('img');
+  picture.setAttribute('src', lgPic);
+  divForEach.appendChild(picture);
+
+  let h2ForNames = document.createElement('h2');
+  let names = document.createTextNode(`${fullName}`);
+  divForEach.appendChild(h2ForNames);
+  h2ForNames.appendChild(names);
+
+  let pForLink = document.createElement('p');
+  let link4email = document.createElement('a');
+  link4email.setAttribute('href', `${email}`);
+  link4email.innerHTML = (` ${email}`);
+  divForEach.appendChild(pForLink);
+  pForLink.appendChild(link4email);
+
+  let pForStreet = document.createElement('p');
+  let pForCityState = document.createElement('p');
+  let pForPhoneNumber = document.createElement('p');
+  let addressStreet = document.createTextNode(`${street}`);
+  let addressCityState = document.createTextNode(`${cityState}`);
+  let phoneNumber = document.createTextNode(`${phone}`);
+  divForEach.appendChild(pForStreet);
+  pForStreet.appendChild(addressStreet);
+
+  divForEach.appendChild(pForCityState);
+  pForCityState.appendChild(addressCityState);
+
+  divForEach.appendChild(pForPhoneNumber);
+  pForPhoneNumber.appendChild(phoneNumber);
+
+
+
+
+
+
+}
+ console.log(pgContent);
