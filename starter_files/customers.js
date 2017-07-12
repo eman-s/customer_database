@@ -459,6 +459,7 @@ for (i = 0; i < customers.results.length; i++){
   let street    = `${customers.results[i].location.street}  ${customers.results[i].location.postcode}`;
   let cityState = `${customers.results[i].location.city}, ${customers.results[i].location.state}`;
   let phone     = `${customers.results[i].phone}`
+  let social    = `${customers.results[i].id.value}`
 
   let divForEach = document.createElement('div')
   pgContent.appendChild(divForEach);
@@ -483,9 +484,11 @@ for (i = 0; i < customers.results.length; i++){
   let pForStreet = document.createElement('p');
   let pForCityState = document.createElement('p');
   let pForPhoneNumber = document.createElement('p');
+  let pForSSN = document.createElement('p');
   let addressStreet = document.createTextNode(`${street}`);
   let addressCityState = document.createTextNode(`${cityState}`);
   let phoneNumber = document.createTextNode(`${phone}`);
+  let customerSSN = document.createTextNode(`${social}`);
   divForEach.appendChild(pForStreet);
   pForStreet.appendChild(addressStreet);
 
@@ -494,6 +497,9 @@ for (i = 0; i < customers.results.length; i++){
 
   divForEach.appendChild(pForPhoneNumber);
   pForPhoneNumber.appendChild(phoneNumber);
+
+  divForEach.appendChild(pForSSN);
+  pForSSN.appendChild(customerSSN);
 
 
 
